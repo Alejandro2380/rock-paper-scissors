@@ -1,0 +1,95 @@
+<script>
+  // generate one of three items
+  // ask for player item selection
+  // determine winner by values
+  // return statement with winner and loser included
+
+  let item;
+  let compChoice;
+  let playerPoints = 0;
+  let compPoints = 0;
+
+  function game (win){
+    for (var i = 1; i < 6; i++ ){
+      computerSelection();
+      playRound();
+    }
+   if(playerPoints === compPoints){
+    alert("YOU BOTH HAVE TIED WITH " + compPoints + " POINTS! ");
+     return "YOU BOTH HAVE TIED WITH " + compPoints + " POINTS! ";
+   } else if (playerPoints > compPoints){
+       alert("CONGRATULATIONS, YOU WIN BY " + (playerPoints - compPoints) + " POINTS. FINAL SCORE: " + playerPoints + " TO " + compPoints);
+       return "CONGRATULATIONS, YOU WIN BY " + (playerPoints - compPoints) + " POINTS. FINAL SCORE: " + playerPoints + " TO " + compPoints;
+
+   } else if(playerPoints < compPoints){
+    alert("SORRY, YOU LOSE BY "  + (compPoints - playerPoints)  + " POINTS. FINAL SCORE: " + compPoints + " TO " + playerPoints);
+       return "SORRY, YOU LOSE BY "  + (compPoints - playerPoints)  + " POINTS. FINAL SCORE: " + compPoints + " TO " + playerPoints;
+   }
+
+  function computerSelection(playerSelection){
+     item =  Math.round((Math.random(.80))* 100) / 100;
+
+
+
+    if(item >= 0.52){
+       compChoice = 'rock';
+    } else if (item >= 0.27 && item <= 0.51 ){
+      compChoice ='scissors';
+    }   else if (item <= 0.26)  {
+           compChoice ='paper';
+    }
+
+  }
+
+  function playRound(playerSelection, computerSelection){
+    let answer = prompt("ROUND " + i + ": ENTER EITHER ROCK , PAPER OR SCISSORS");
+    let playerAnswer = answer.toLowerCase();
+
+
+    if(playerAnswer === compChoice){
+      console.log("TOO BAD SO BAD, NO ONE WON!");
+      return "Too Bad so Sad Noone One!";
+    } else if (playerAnswer === "scissors"){
+        if(compChoice === 'paper'){
+          playerPoints++;
+          console.log("You Win scissors always beats paper");
+          alert("You Win scissors always beats paper");
+          return "You Win scissors always beats paper";
+
+        } else if (compChoice === "rock")
+           compChoice++;
+           console.log("You Lose wins rock always beat scissors");
+           alert("You Lose wins rock always beat scissors");
+          return "You Lose wins rock always beat scissors";
+    }
+
+    if (playerAnswer === "rock"){
+        if(compChoice === 'paper'){
+          compChoice++;
+          console.log("You Lose, paper always beats rock");
+          alert("You Lose, paper always beats rock");
+          return "You Lose, paper always beats rock";
+        } else if (compChoice === 'scissors')
+          playerPoints++;
+           console.log("You win rock always beat scissors");
+           alert("You win rock always beat scissors");
+          return "You win rock always beat scissors";
+    }
+
+    if (playerAnswer === "paper"){
+        if(compChoice === 'scissors'){
+          compChoice++;
+           console.log("You Lose, scissors always beats paper");
+           alert("You Lose, scissors always beats paper");
+          return "You Lose, scissors always beats paper";
+        } else if (compChoice === 'rock')
+          playerPoints++;
+          console.log("You win paper always beats rock");
+          alert("You win paper always beats rock");
+          return "You win paper always beats rock";
+    }
+
+  }
+  }
+  game ();
+</script>
