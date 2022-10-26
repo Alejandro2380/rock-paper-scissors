@@ -5,13 +5,13 @@
 
   let item;
   let compChoice;
-  const playerPoints = 0;
-  const compPoints = 0;
+  let playerPoints = 0;
+  let compPoints = 0;
   let responseOne = " ";
-  let responseTwo = " "
+  let responseTwo = " ";
 
   function game (selection){
-    for (var i = 0; i < 5; i++){
+    for (let i = 1; i < 5; i++){
       computerSelection();
       playRound(selection);
     
@@ -21,12 +21,14 @@
 
    if(playerPoints === compPoints){
      responseTwo = "YOU BOTH HAVE TIED WITH " + compPoints + " POINTS! ";
+
    } else if (playerPoints > compPoints){
        responseTwo = "CONGRATULATIONS, YOU WIN BY " + (playerPoints - compPoints) + " POINTS. FINAL SCORE: " + playerPoints + " TO " + compPoints;
 
-   } else {
+   } else if (compPoints > playerPoints) {
        responseTwo = "SORRY, YOU LOSE BY "  + (compPoints - playerPoints)  + " POINTS. FINAL SCORE: " + compPoints + " TO " + playerPoints;
    }
+  
    
    document.getElementById('responseTwo').innerHTML = responseTwo;
 }
@@ -47,7 +49,7 @@
 
   function playRound(playerSelection){
 
-    let playerAnswer = playerSelection
+    let playerAnswer = playerSelection.toLowerCase();
 
 
     if(playerAnswer === compChoice){
@@ -56,36 +58,39 @@
 
     } else if(playerAnswer === "scissors"){
         if(compChoice === 'paper'){
-          playerPoints = playerPoints + 1;
+          playerPoints += 1;
           responseOne=" You Win scissors always beats paper";
             return;
 
-        } else {
-        compPoints = compPoints +1;
+        } else if (compChoice === "rock") {
+        compPoints += 1;
         responseOne= " You Lose Rock always beats scissors";
-        return;
-            }
-        
-         } else if (playerAnswer === "rock"){
+       return;
+          
+        }
+      } 
+
+      if (playerAnswer === "rock"){
           if(compChoice === 'paper'){
-            compPoints = compPoints +1;
+            compPoints += 1;
             responseOne= " You Lose Paper always beats rock";
             return;
 
-        } else{
-        playerPoints = playerPoints + 1;
-        responseOne= " You Win rock always beats scissors";
-          return;
-        }
-    }  
-    else if(playerAnswer ===  "paper") {
+          } else if (compChoice === 'scissors'){
+            playerPoints += 1;
+            responseOne= " You Win rock always beats scissors";
+            return;
+            }
+      }  
+
+        if(playerAnswer === "paper"){
             if(compChoice === 'scissors'){
-            compPoints = compPoints +1;
-            responseOne= " You Lose scissors always beats paper";
+              compPoints += 1;
+              responseOne= " You Lose scissors always beats paper";
             return;
 
-            } else {
-            playerPoints = playerPoints + 1;
+            } else if (compChoice === 'rock') {
+            playerPoints += 1;
             responseOne= " You Win paper always beats rock";
             return;
             }

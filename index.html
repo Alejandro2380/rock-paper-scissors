@@ -4,21 +4,48 @@
     <title> Paper Rock Scissors </title>
     <meta charset="UTF-8";>
     <script type = "text/javascript" src="script.js"></script>  
+    <link rel="stylesheet" href="style.css">
+
 
   </head>
 <body>
 
+<div class = "header">
 
-    <button onclick="game('rock')">rock</button>
-  
-    <button onclick="game('paper')">paper</button>
-  
-    <button onclick="game('scissors')">scissors</button>
- <div>
-    <p id="responseOne"> Welcome!</p>
+ <div class = "Title">
+   <p> Rock Papers and Snip-snip</p>
  </div>
- <div>
-    <p id="responseTwo">Lets Play A Game</p>
- </div>
+
+</div>
+
+
+
+<div class = "container">
+
+   <div class = "game-update">
+
+      <p id="responseOne"> Welcome!</p>
+   
+   
+   </div>
+
+   <div class = "button">
+
+    <button class = "play" onclick="game('rock')">rock</button>
+  
+    <button class = "play" onclick="game('paper')">paper</button>
+  
+    <button  class = "play"onclick="game('scissors')">scissors</button>
+   </div>
+
+   <div class = "final-score">
+ 
+      <p id="responseTwo">Lets Play A Game</p>
+  
+  </div>
+
+</div>
+
+
 </body>
 </html>
